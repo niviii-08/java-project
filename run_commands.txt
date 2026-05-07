@@ -1,0 +1,38 @@
+java -cp "out;lib\mysql-connector-java.jar" com.pathfinder.Main
+
+
+Here are the commands to run the Pathfinder project:
+
+Option 1: Using the provided Batch script (Command Prompt)
+---------------------------------------------------------
+Simply double-click the `run.bat` file in your project folder, or run the following command in Command Prompt:
+> run.bat
+
+
+Option 2: Using the PowerShell script (PowerShell)
+---------------------------------------------------------
+Open PowerShell in the project folder and run:
+> .\fast_run.ps1
+
+
+Option 3: Running manually (Command Prompt or PowerShell)
+---------------------------------------------------------
+1. Create the output directory (if it doesn't exist):
+   > mkdir out
+
+2. Compile the Java files:
+   For Windows Command Prompt:
+   > dir /s /b src\*.java > sources.txt
+   > javac -cp "lib\mysql-connector-java.jar" -d out @sources.txt
+   
+   For Windows PowerShell:
+   > $files = Get-ChildItem -Path src -Filter *.java -Recurse | ForEach-Object { $_.FullName }
+   > javac -cp "lib/mysql-connector-java.jar" -d out $files
+
+3. Run the compiled Java application:
+   > java -cp "out;lib\mysql-connector-java.jar" com.pathfinder.Main
+
+Prerequisites:
+- Ensure you have JDK 17 or higher installed.
+- Ensure the MySQL database is running and configured correctly.
+- Ensure the 'mysql-connector-java.jar' file is present inside the 'lib' folder.
